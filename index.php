@@ -1,5 +1,10 @@
 <?php
+
+include "./config.php";
+
 $action = isset( $_POST['action'] ) ? $_POST['action'] : '';
+$password = isset( $_GET['password'] ) ? $_GET['password'] : '';
+
 if(empty($action))
 {
 	$nowClientId = (int)file_get_contents('clientId') ;
@@ -36,7 +41,11 @@ if(empty($action))
 	die;
 }
 
-
+if($config['password'] != $password)
+{
+	echo '<p>deny</p>';
+	return;
+}
 
 ?>
 
