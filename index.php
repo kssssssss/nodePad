@@ -28,14 +28,14 @@ if(empty($action))
     {
 	    if(!file_put_contents('left.txt', $leftTxt))
         {
-	        file_put_contents('error.log', time().'----left\n\r');
+	        file_put_contents('error.log', time().'----left\n\r', FILE_APPEND);
         }
     }
 	if(!empty($rightTxt))
 	{
 		if(!file_put_contents('right.txt', $rightTxt))
         {
-	        file_put_contents('error.log', time().'----right\n\r');
+	        file_put_contents('error.log', time().'----right\n\r', FILE_APPEND);
         }
 	}
 	die;
