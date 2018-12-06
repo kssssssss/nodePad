@@ -26,16 +26,16 @@ if(empty($action))
 	$rightTxt = isset( $_POST['righttxt'] ) ? htmlspecialchars($_POST['righttxt']) : '';
 	if(!empty($leftTxt))
     {
-	    if(!file_put_contents('left.txt', $leftTxt))
+	    if(!file_put_contents(__DIR__.'/left.txt', $leftTxt))
         {
-	        file_put_contents('error.log', time().'----left\n\r', FILE_APPEND);
+	        file_put_contents(__DIR__.'/error.log', time().'----left\n\r', FILE_APPEND);
         }
     }
 	if(!empty($rightTxt))
 	{
-		if(!file_put_contents('right.txt', $rightTxt))
+		if(!file_put_contents(__DIR__.'/right.txt', $rightTxt))
         {
-	        file_put_contents('error.log', time().'----right\n\r', FILE_APPEND);
+	        file_put_contents(__DIR__.'/error.log', time().'----right\n\r', FILE_APPEND);
         }
 	}
 	die;

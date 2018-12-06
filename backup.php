@@ -8,22 +8,23 @@ set_error_handler(function($errno, $errstr, $errfile, $errline) {
 date_default_timezone_set( 'Asia/Shanghai' );
 $dateNow = date( 'Ymd' , ( time() - 24 * 60 * 60 ) );
 $dirName = date( 'Ym' , ( time() - 24 * 60 * 60 ) );
-if( !is_dir( './backup/' . $dirName ) )
+
+if( !is_dir( __DIR__.'/backup/' . $dirName ) )
 {
-	mkdir( './backup/' . $dirName );
+	mkdir( __DIR__.'/backup/' . $dirName );
 }
 
-$leftTxt = file_get_contents( '/home/nodePad/left.txt' );
-$rightTxt = file_get_contents( '/home/nodePad/right.txt' );
+$leftTxt = file_get_contents( __DIR__.'/left.txt' );
+$rightTxt = file_get_contents( __DIR__.'/right.txt' );
 
 try
 {
-	file_put_contents( '/home/nodePad/backup/' . $dirName . '/left' . $dateNow , $leftTxt );
-	file_put_contents( '/home/nodePad/backup/' . $dirName . '/right' . $dateNow , $rightTxt );
+	file_put_contents( __DIR__.'/backup/' . $dirName . '/left' . $dateNow , $leftTxt );
+	file_put_contents( __DIR__.'/backup/' . $dirName . '/right' . $dateNow , $rightTxt );
 }
 catch(ErrorException $e)
 {
-	file_put_contents( '/home/nodePad/error.log' , date('Y-m-d h:i', time()) . '-------'.$e->getMessage().'------fail\r\n', FILE_APPEND );
+	file_put_contents( __DIR__.'/error.log' , date('Y-m-d h:i', time()) . '-------'.$e->getMessage().'------fail\r\n', FILE_APPEND );
 }
 
 
